@@ -40,7 +40,7 @@ class CreateRolesTables extends Migration
                   ->on('roles')
                   ->onDelete('cascade');
 
-            $table->primary(['permission_Id', 'role_id']);
+            $table->primary(['permission_id', 'role_id']);
         });
 
         Schema::create('role_user', function (Blueprint $table) {
@@ -68,6 +68,9 @@ class CreateRolesTables extends Migration
      */
     public function down()
     {
-        //
+        Schema::drop('role_user');
+        Schema::drop('permission_role');
+        Schema::drop('permissions');
+        Schema::drop('roles');
     }
 }
